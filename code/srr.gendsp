@@ -1,0 +1,135 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 5,
+			"revision" : 3,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 104.0, 87.0, 1499.0, 645.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "audiostart",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 489.0, 547.0, 31.0, 20.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 50.0, 14.0, 25.0, 20.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 305.0, 14.0, 25.0, 20.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "Param srr_dry_wet(0,min=0,max=1);\r\nParam srr_crush(1,min=1,max=128);\r\nParam bit_depth(8);\r\nParam threshold(-40);\r\nParam ratio(1.5);\r\nParam time(0.02);\r\nHistory lastGain(0);\r\nHistory yn(0);\r\nHistory yn2(0);\r\nsrr_clock = counter(1,0,srr_crush);\r\nL = in1;\r\nR = in2;\r\nLgain = atodb(abs(L));\r\nRgain = atodb(abs(R));\r\n\r\ncomp_threshold = dbtoa(threshold);\r\ncomp_ratio = ratio;\r\nepsilon = 1e-9;\r\nlastGain = (L+R)/2;\r\npwr = abs(lastGain);\r\ncompression = 1;\r\n\r\n\r\n\ta1 = exp(-twopi/(time*samplerate));\r\n\tb0 = 1.0-a1;\r\n\txn = pwr;\r\n\tyn = (b0*xn) + (yn*a1);\r\npwr = yn;\r\n\r\nif (pwr > comp_threshold) {\n    // Added epsilon for division\n    compression = (comp_threshold + (pwr - comp_threshold) / (comp_ratio + epsilon));\n} \r\n\r\n\txn = compression;\r\n\tyn2 = (b0*xn) + (yn2*a1);\r\n\tcompression = yn2;\r\n/*\r\nif (pwr < comp_threshold) {\n    // Added epsilon for division\n    compression = (comp_threshold + (comp_threshold-pwr) / (comp_ratio + epsilon));\n} \r\n*/\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\nbits = pow(2,bit_depth);\r\ncrushedL = L;\r\ncrushedL *= bits;\r\ncrushedL = int(crushedL);\r\ncrushedL /= bits;\r\ncrushedR = R;\r\ncrushedR *= bits;\r\ncrushedR = int(crushedR);\r\ncrushedR /= bits;\r\n\r\n\r\ndynmix = 1-compression;\r\ndynmix2 = 0;\r\n\r\n\r\nL = mix(L, crushedL, srr_dry_wet);\r\nR = mix(R, crushedR, srr_dry_wet);\r\n\r\nreducedL = sah(L, srr_clock>0);\r\nreducedR = sah(R, srr_clock>0);\r\nL = mix(L, reducedL, srr_dry_wet*(dynmix));\r\nR = mix(R, reducedR, srr_dry_wet*(dynmix));\r\n\r\nL = mix(L, L*(compression), srr_dry_wet);\r\nR = mix(R, R*(compression), srr_dry_wet);\r\nlPost = atodb(abs(L));\r\nrPost = atodb(abs(R));\r\nL *=dbtoa( Lgain-lPost);\r\nR *=dbtoa( Rgain-rPost);\r\n\r\nout1=L;\r\nout2=R;",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 43.0, 66.0, 719.0, 411.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 72.0, 547.0, 31.0, 20.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+ ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+	}
+
+}

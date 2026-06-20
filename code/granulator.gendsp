@@ -1,0 +1,157 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 5,
+			"revision" : 3,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 104.0, 87.0, 976.0, 620.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "audiostart",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 644.0, 534.0, 31.0, 20.0 ],
+					"text" : "out 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 498.0, 502.0, 31.0, 20.0 ],
+					"text" : "out 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "Data grainMemory(SAMPLERATE*4,2);\r\nBuffer window;\r\nParam eventsPerSecond(3);\r\nParam grainSize(0.1);\r\nParam grainSpread(0.1);\r\nParam dryWet(1);\r\n\r\nData grainCount(16,2);\r\nData timeOfNextEventSamples(16,2);\r\nData grainDuration(16,2);\r\nData grainDelay(16,2);\r\nData grains(1,2);\r\n\r\ncount = counter(1,0,0);\r\nL = in1;\r\nR = in2;\r\n\r\npoke(grainMemory, L,  count, 0, boundmode=\"wrap\");\r\npoke(grainMemory, R,  count, 1, boundmode=\"wrap\");\r\n\r\nnz2 = abs(noise());\r\nnz3 = abs(noise());\r\n\r\n\r\nsamplesPerEvent = SAMPLERATE/(eventsPerSecond + 1e-9);\r\n\r\nfor(c=0;c<2;c+=1){\r\npoke(grains,0,0,c,boundmode=\"wrap\");\r\nfor(v=0;v<16;v+=1){\r\n\tgc = peek(grainCount,v,c,boundmode=\"wrap\", channels=1);\r\n\tgdr = peek(grainDuration,v,c,boundmode=\"wrap\", channels=1);\r\n\tgdl = peek(grainDelay,v,c,boundmode=\"wrap\", channels=1);\r\n\ttn = peek(timeOfNextEventSamples, v,c, boundmode=\"wrap\", channels=1);\r\nif((gc>=tn)){\r\n\tr = abs(noise());\r\n\tpoke(grainCount,0,v,c,boundmode=\"wrap\");\r\n\tgrainDur = SAMPLERATE*nz3*grainSize + SAMPLERATE*0.001;\r\n\tpoke(grainDuration,grainDur,v,c,boundmode=\"wrap\");\r\n\tpoke(grainDelay,SAMPLERATE*nz2*grainSpread+1,v,c,boundmode=\"wrap\");\r\n\ttnn = clamp(floor(1+r*samplesPerEvent) + grainDur,1,SAMPLERATE*4);\r\n\tpoke(timeOfNextEventSamples,tnn,v,c,boundmode=\"wrap\");\r\n} else {\r\n\t\r\n\tpoke(grainCount,gc+1,v,c,boundmode=\"wrap\");\r\n}\r\n\r\ngrainEnv = peek(window,(gc/gdr)*2048, boundmode=\"clip\", interp=\"linear\", channels=1 );\r\ndelayed = peek(grainMemory, count - gdl, 0, boundmode=\"wrap\", interp=\"linear\", channels=1);\r\nac = peek(grains,0,c,boundmode=\"wrap\", channels=1);\r\npoke(grains,delayed*grainEnv + ac,0,c,boundmode=\"wrap\");\r\n}\r\n\r\n}\r\n\r\n\r\nout1 = mix(L,peek(grains,0,0,channels=1)*0.33,dryWet);\r\nout2 = mix(R,peek(grains,0,1,channels=1)*0.33,dryWet);\r\n",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 10.0,
+					"id" : "obj-6",
+					"maxclass" : "codebox",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 35.0, 92.0, 747.0, 378.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 237.0, 504.0, 31.0, 20.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 35.0, 54.0, 25.0, 20.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 757.0, 54.0, 25.0, 20.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 50.0, 504.0, 31.0, 20.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-6", 1 ]
+				}
+
+			}
+ ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+	}
+
+}

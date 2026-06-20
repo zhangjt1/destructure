@@ -1,0 +1,323 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 8,
+			"minor" : 5,
+			"revision" : 3,
+			"architecture" : "x64",
+			"modernui" : 1
+		}
+,
+		"classnamespace" : "dsp.gen",
+		"rect" : [ 747.0, 156.0, 1139.0, 741.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 1,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 1,
+		"objectsnaponopen" : 1,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"lefttoolbarpinned" : 0,
+		"toptoolbarpinned" : 0,
+		"righttoolbarpinned" : 0,
+		"bottomtoolbarpinned" : 0,
+		"toolbars_unpinned_last_save" : 0,
+		"tallnewobj" : 0,
+		"boxanimatetime" : 200,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"style" : "",
+		"subpatcher_template" : "audiostart",
+		"assistshowspatchername" : 0,
+		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 800.0, 35.0, 19.0, 20.0 ],
+					"text" : "1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 753.0, 60.0, 29.5, 20.0 ],
+					"text" : "lag3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 753.0, 14.0, 34.0, 20.0 ],
+					"text" : "dbtoa"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 549.0, 36.0, 131.0, 20.0 ],
+					"text" : "param crackle @default -30"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 945.0, 85.0, 19.0, 20.0 ],
+					"text" : "1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 898.0, 110.0, 29.5, 20.0 ],
+					"text" : "lag3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 898.0, 64.0, 34.0, 20.0 ],
+					"text" : "dbtoa"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 898.0, 40.0, 123.0, 20.0 ],
+					"text" : "param hiss @default -100"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 517.0, 482.0, 31.0, 20.0 ],
+					"text" : "out 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 312.0, 464.0, 31.0, 20.0 ],
+					"text" : "out 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "// DECLARATIONS\r\nSmoothingFilter__Next(filters, time, bank, chan, xn){\r\n\ta1 = exp(-twopi/(time*samplerate));\r\n\tb0 = 1.0-a1;\r\n\tyn = peek(filters,0,chan, channels=1);\r\n\tyn = (b0*xn) + (yn*a1);\r\n\tpoke(filters,yn,0,chan);\r\n\treturn yn;\r\n}\r\n\r\n\r\nData followers(1,2);\r\nParam follow_time(0.001);\r\n\r\nHistory lfoPhase1(0.0202);\r\nHistory lfoPhase2(0.0202);\r\nHistory hp1_yn(0.0);\r\nHistory crackle_counter(0);\nHistory crackle_active(0);\nHistory crackle_amplitude(0);\r\n\r\nx1 = abs(in1);\r\nl1 = SmoothingFilter__Next(followers,follow_time, 0, 0, x1);\r\nl1 = abs(l1);\r\n\r\nx2 = abs(in2);\r\nl2 = SmoothingFilter__Next(followers,follow_time, 0, 1, x2);\r\nl2 = abs(l2);\r\n\r\nl1 = clamp(atodb(l1*1000),0, 7);\r\nl2 = clamp(atodb(l2*1000),0, 7);\r\n\r\nc1 = clamp(dbtoa(-l1),0,1);\r\nc2 = clamp(dbtoa(-l2),0,1);\r\n\r\nhsa = in3;\r\n\r\nnz1 = noise();\r\nnz2 = noise();\r\nnz3 = noise();\r\n\r\nnzmix = (nz1+nz2+nz3)*0.333333*mix(0.9,1.1,sin((lfoPhase1+lfoPhase2)*twopi));\r\n\r\n\r\nlfoPhase1 += 0.3*nz1*nz1/SAMPLERATE;\r\nlfoPhase2 += 0.1*nz3*nz3/SAMPLERATE;\r\nif(lfoPhase1>1){lfoPhase-=1;}\r\nif(lfoPhase2>1){lfoPhase-=1;}\r\nhp_cutoff = 300 / samplerate;\nhp1_yn   = hp1_yn + hp_cutoff * (nzmix - hp1_yn);\nfiltered_hiss = nzmix - hp1_yn;\r\nnzmix = filtered_hiss;\r\n\r\n// Random crackle generation (using tape_factor instead of tape_age)\r\n\r\ntape_factor = 0.8;\r\nepsilon = 1e-9;\r\ncrackle = in4;\ncrackle_counter += 1;\ncrackle_threshold = 10000 - (pow(tape_factor,2) * 9900);\n// Prevent division by zero if threshold is 0 or less\ncrackle_chance = crackle_threshold > epsilon ? (1 / crackle_threshold) : 1;\n\nif (nz1 > (1 - crackle_chance * 0.1) && crackle_active < 0.5 && crackle > 0) {\n    crackle_active = 1;\n    crackle_counter = 0;\n    crackle_amplitude = 0.2 + nz2  * tape_factor ;\n}\nif (crackle_counter > 20) {\n    crackle_active = 0;\n}\ncrackle_noise = crackle_active * crackle_amplitude *crackle* nz3;\r\n\r\nout1 = nzmix*hsa*c1 + crackle_noise;\r\nout2 = nzmix*hsa*c2 + crackle_noise*0.97;\r\nout3 = c1;\r\nout4 = c2;",
+					"fontface" : 0,
+					"fontname" : "<Monospaced>",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "codebox",
+					"numinlets" : 4,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 90.0, 100.0, 724.0, 326.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-5",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 193.0, 457.0, 31.0, 20.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 50.0, 14.0, 25.0, 20.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 305.0, 14.0, 25.0, 20.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 123.0, 457.0, 31.0, 20.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 2 ],
+					"source" : [ "obj-10", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 1 ],
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 1 ],
+					"source" : [ "obj-13", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 3 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 1 ],
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"source" : [ "obj-3", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-3", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"source" : [ "obj-3", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 0 ],
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ],
+		"bgcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
+	}
+
+}
