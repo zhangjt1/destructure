@@ -2,8 +2,8 @@
 	"name" : "[de]structure v2",
 	"version" : 1,
 	"creationdate" : 3845146474,
-	"modificationdate" : 3869823773,
-	"viewrect" : [ 25.0, 106.0, 300.0, 500.0 ],
+	"modificationdate" : 3871300777,
+	"viewrect" : [ 976.0, 309.0, 300.0, 500.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -59,12 +59,12 @@
 				"local" : 1
 			}
 ,
-			"seagulls-and-windchimes.wav" : 			{
+			"[de]structure - david.mp3" : 			{
 				"kind" : "audiofile",
 				"local" : 1
 			}
 ,
-			"[de]structure - david.mp3" : 			{
+			"seagulls-and-windchimes.wav" : 			{
 				"kind" : "audiofile",
 				"local" : 1
 			}
