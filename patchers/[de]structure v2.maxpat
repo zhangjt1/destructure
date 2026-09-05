@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 185.0, 117.0, 1105.0, 698.0 ],
+		"rect" : [ 273.0, 96.0, 1571.0, 855.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -57,7 +57,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 1718.0, 988.0, 106.0, 74.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1370.0, 374.0, 105.0, 64.0 ],
+					"presentation_rect" : [ 1259.0, 374.0, 105.0, 64.0 ],
 					"varname" : "patcher[2]",
 					"viewvisibility" : 1
 				}
@@ -572,7 +572,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 1824.0, 1089.5, 48.0, 136.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1469.0, 469.0, 48.0, 136.0 ],
+					"presentation_rect" : [ 1358.0, 469.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_initial" : [ -16 ],
@@ -991,7 +991,7 @@
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 556.0, 162.0, 230.0, 20.0 ],
-									"text" : "late_reflections 0."
+									"text" : "early_reflections_size 2.005"
 								}
 
 							}
@@ -1412,7 +1412,7 @@
 					"patching_rect" : [ 946.5, -114.0, 141.0, 89.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 253.0, 9.0, 111.0, 66.0 ],
-					"varname" : "patcher[1]",
+					"varname" : "main__fx_level",
 					"viewvisibility" : 1
 				}
 
@@ -1573,7 +1573,7 @@
 					"patching_rect" : [ 1319.0, 1318.0, 116.0, 83.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 299.0, 654.0, 103.0, 66.0 ],
-					"varname" : "patcher[36]",
+					"varname" : "crusher___time",
 					"viewvisibility" : 1
 				}
 
@@ -1598,7 +1598,7 @@
 					"patching_rect" : [ 1313.0, 1213.0, 106.0, 76.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 404.0, 579.0, 105.0, 66.0 ],
-					"varname" : "patcher[37]",
+					"varname" : "crusher___ratio",
 					"viewvisibility" : 1
 				}
 
@@ -1623,7 +1623,7 @@
 					"patching_rect" : [ 1180.0, 1213.0, 113.0, 82.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 299.0, 579.0, 103.5, 66.0 ],
-					"varname" : "patcher[38]",
+					"varname" : "crusher___threshold",
 					"viewvisibility" : 1
 				}
 
@@ -1648,7 +1648,7 @@
 					"patching_rect" : [ 743.0, 1051.0, 109.0, 69.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 312.0, 441.0, 116.0, 66.0 ],
-					"varname" : "patcher[39]",
+					"varname" : "crusher___crush",
 					"viewvisibility" : 1
 				}
 
@@ -1673,7 +1673,7 @@
 					"patching_rect" : [ 1436.0, 1187.5, 122.0, 73.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 430.0, 441.0, 109.0, 66.0 ],
-					"varname" : "patcher[40]",
+					"varname" : "crusher__bit_depth",
 					"viewvisibility" : 1
 				}
 
@@ -1709,7 +1709,7 @@
 					"patching_rect" : [ 858.0, 1046.0, 110.0, 79.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 483.0, 342.0, 100.0, 66.0 ],
-					"varname" : "patcher[41]",
+					"varname" : "crusher__srr_wet_level",
 					"viewvisibility" : 1
 				}
 
@@ -2184,7 +2184,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 959.0, 348.0, 150.0, 20.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1370.0, 342.0, 150.0, 20.0 ],
+					"presentation_rect" : [ 1259.0, 342.0, 150.0, 20.0 ],
 					"text" : "Fixed Media"
 				}
 
@@ -3381,7 +3381,7 @@
 					"patching_rect" : [ 292.0, 928.0, 76.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 953.0, 419.0, 103.0, 66.0 ],
-					"varname" : "patcher[23]",
+					"varname" : "grainulator__event_speed",
 					"viewvisibility" : 1
 				}
 
@@ -3406,7 +3406,7 @@
 					"patching_rect" : [ 370.0, 928.0, 76.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1058.0, 419.0, 99.0, 66.0 ],
-					"varname" : "patcher[24]",
+					"varname" : "grainulator__size",
 					"viewvisibility" : 1
 				}
 
@@ -3431,7 +3431,7 @@
 					"patching_rect" : [ 292.0, 1014.0, 76.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 953.0, 491.0, 103.0, 66.0 ],
-					"varname" : "patcher[25]",
+					"varname" : "grainulator__spread",
 					"viewvisibility" : 1
 				}
 
@@ -3456,7 +3456,7 @@
 					"patching_rect" : [ 374.0, 1014.0, 76.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1106.0, 335.0, 105.0, 66.0 ],
-					"varname" : "patcher[26]",
+					"varname" : "grainulator__mix",
 					"viewvisibility" : 1
 				}
 
@@ -3699,7 +3699,7 @@
 					"patching_rect" : [ 1342.0, 795.5, 108.0, 79.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 821.5, 518.0, 101.0, 64.0 ],
-					"varname" : "patcher[22]",
+					"varname" : "tape__dropouts",
 					"viewvisibility" : 1
 				}
 
@@ -3737,7 +3737,7 @@
 					"patching_rect" : [ 1342.0, 642.5, 108.0, 74.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 821.5, 609.0, 100.0, 64.0 ],
-					"varname" : "patcher[21]",
+					"varname" : "tape__crackle",
 					"viewvisibility" : 1
 				}
 
@@ -3762,7 +3762,7 @@
 					"patching_rect" : [ 248.0, 14.0, 141.0, 89.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 62.5, 26.0, 111.0, 66.0 ],
-					"varname" : "patcher[20]",
+					"varname" : "input__noise_gate",
 					"viewvisibility" : 1
 				}
 
@@ -4358,7 +4358,7 @@
 					"patching_rect" : [ 229.5, 457.0, 116.0, 86.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 176.5, 335.0, 107.5, 64.0 ],
-					"varname" : "patcher[19]",
+					"varname" : "reverb__mix",
 					"viewvisibility" : 1
 				}
 
@@ -4750,7 +4750,7 @@
 					"patching_rect" : [ 268.0, 610.0, 116.0, 80.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 792.0, 335.0, 115.0, 64.0 ],
-					"varname" : "patcher[18]",
+					"varname" : "tape__mix",
 					"viewvisibility" : 1
 				}
 
@@ -4798,7 +4798,7 @@
 					"patching_rect" : [ 1231.5, 938.5, 106.5, 68.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 715.0, 425.0, 105.0, 64.0 ],
-					"varname" : "patcher[16]",
+					"varname" : "tape__saturation_bias",
 					"viewvisibility" : 1
 				}
 
@@ -4823,7 +4823,7 @@
 					"patching_rect" : [ 1127.0, 938.5, 103.5, 68.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 600.0, 425.0, 105.0, 64.0 ],
-					"varname" : "patcher[17]",
+					"varname" : "tape__saturation",
 					"viewvisibility" : 1
 				}
 
@@ -4912,7 +4912,7 @@
 					"patching_rect" : [ 1236.5, 795.5, 101.5, 74.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 715.0, 518.0, 105.0, 64.0 ],
-					"varname" : "patcher[14]",
+					"varname" : "tape__wobble_speed",
 					"viewvisibility" : 1
 				}
 
@@ -4937,7 +4937,7 @@
 					"patching_rect" : [ 1127.0, 795.5, 107.5, 74.5 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 600.0, 518.0, 105.0, 64.0 ],
-					"varname" : "patcher[15]",
+					"varname" : "tape__wobble",
 					"viewvisibility" : 1
 				}
 
@@ -5002,7 +5002,7 @@
 					"patching_rect" : [ 1231.5, 642.5, 106.5, 75.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 715.0, 609.0, 105.0, 64.0 ],
-					"varname" : "patcher[13]",
+					"varname" : "tape__hiss_follow_time",
 					"viewvisibility" : 1
 				}
 
@@ -5027,7 +5027,7 @@
 					"patching_rect" : [ 1127.0, 642.5, 103.5, 70.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 600.0, 609.0, 105.0, 64.0 ],
-					"varname" : "patcher[6]",
+					"varname" : "tape__hiss",
 					"viewvisibility" : 1
 				}
 
@@ -5152,7 +5152,7 @@
 					"patching_rect" : [ 746.0, 654.0, 106.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 589.0, 105.0, 64.0 ],
-					"varname" : "patcher[12]",
+					"varname" : "reverb__late_reflections",
 					"viewvisibility" : 1
 				}
 
@@ -5177,7 +5177,7 @@
 					"patching_rect" : [ 746.0, 841.0, 106.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 44.0, 425.0, 103.0, 66.0 ],
-					"varname" : "patcher[11]",
+					"varname" : "reverb__early_reflections",
 					"viewvisibility" : 1
 				}
 
@@ -5242,7 +5242,7 @@
 					"patching_rect" : [ 746.0, 728.0, 106.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 654.0, 105.0, 64.0 ],
-					"varname" : "patcher[9]",
+					"varname" : "reverb__tank_mod_depth",
 					"viewvisibility" : 1
 				}
 
@@ -5267,7 +5267,7 @@
 					"patching_rect" : [ 858.0, 728.0, 110.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 720.0, 105.0, 64.0 ],
-					"varname" : "patcher[10]",
+					"varname" : "reverb__tank_mod_speed",
 					"viewvisibility" : 1
 				}
 
@@ -5292,7 +5292,7 @@
 					"patching_rect" : [ 746.0, 917.0, 106.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 44.0, 493.0, 103.0, 66.0 ],
-					"varname" : "patcher[8]",
+					"varname" : "reverb__mod_depth",
 					"viewvisibility" : 1
 				}
 
@@ -5317,7 +5317,7 @@
 					"patching_rect" : [ 858.0, 917.0, 110.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 493.0, 105.0, 66.0 ],
-					"varname" : "patcher[7]",
+					"varname" : "reverb__mod_speed",
 					"viewvisibility" : 1
 				}
 
@@ -5353,7 +5353,7 @@
 					"patching_rect" : [ 978.0, 654.0, 105.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 42.0, 654.0, 105.0, 64.0 ],
-					"varname" : "patcher[5]",
+					"varname" : "reverb__decay_seconds",
 					"viewvisibility" : 1
 				}
 
@@ -5378,7 +5378,7 @@
 					"patching_rect" : [ 858.0, 841.0, 110.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 425.0, 105.0, 66.0 ],
-					"varname" : "patcher[4]",
+					"varname" : "reverb__early_reflections_size",
 					"viewvisibility" : 1
 				}
 
@@ -5403,7 +5403,7 @@
 					"patching_rect" : [ 858.0, 654.0, 110.0, 74.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 149.0, 589.0, 105.0, 64.0 ],
-					"varname" : "patcher[3]",
+					"varname" : "reverb__late_reflections_size",
 					"viewvisibility" : 1
 				}
 
@@ -7009,7 +7009,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ -175.0, 798.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 1348.0, 327.0, 290.0, 535.0 ],
+					"presentation_rect" : [ 1237.0, 327.0, 290.0, 535.0 ],
 					"proportion" : 0.5
 				}
 
